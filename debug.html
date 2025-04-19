@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KitchenBuddy Debug</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="module">
+      import './src/debug-page.tsx';
+    </script>
+
+    <!-- Fallback if the module import fails -->
+    <div
+      id="fallback"
+      style="display: none; margin: 40px; font-family: Arial, sans-serif; max-width: 600px"
+    >
+      <h1>KitchenBuddy Debug Page (Fallback)</h1>
+      <p>The React component failed to load. This could be due to:</p>
+      <ul>
+        <li>Module loading issues</li>
+        <li>Vite configuration problems</li>
+        <li>React runtime errors</li>
+      </ul>
+      <p>Try opening the browser console (F12) for more details.</p>
+
+      <script>
+        // Show fallback content after 2 seconds if nothing renders
+        setTimeout(() => {
+          if (!document.querySelector('#root').children.length) {
+            document.querySelector('#fallback').style.display = 'block';
+          }
+        }, 2000);
+      </script>
+    </div>
+  </body>
+</html>

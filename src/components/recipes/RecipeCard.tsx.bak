@@ -1,0 +1,87 @@
+import React from "react";
+import { Recipe } from "@/types/recipe";
+
+type RecipeCardProps = Omit<Recipe, "ingredients" | "instructions" | "description"> & {
+  onClick: (id: string) => void;
+  onFavoriteToggle?: (id: string) => void;
+  isFavorite?: boolean;
+  count?: number | null;
+  modelInfo?: {
+    provider: string;
+    model: string;
+    message: string;
+  } | null;
+  onAddToCart?: (recipe: Recipe) => void;
+  onAddToMealPlan?: (recipe: Recipe) => void;
+  showAddToCart?: boolean;
+  isFull?: boolean;
+  setOpen?: (isOpen: boolean) => void;
+  source?: string | null;
+  notes?: string | null;
+  createdAt?: string;
+  updatedAt?: string;
+  totalTime?: number;
+};
+
+export const RecipeCard: React.FC<RecipeCardProps> = ({
+  id,
+  title,
+  tags = [],
+  prepTime = 0,
+  cookTime = 0,
+  totalTime = 0,
+  servings = 0,
+  image,
+  isFavorite = false,
+  count = null,
+  modelInfo = null,
+  onClick,
+  onFavoriteToggle,
+  onAddToCart,
+  onAddToMealPlan,
+  showAddToCart = true,
+  isFull = false,
+  setOpen,
+  source,
+  notes,
+  createdAt,
+  updatedAt
+}) => {
+  // Super simple component with no hooks or complex logic
+  return (
+    <div className="w-full h-full p-4 border rounded shadow">
+      <h2 className="text-lg font-bold">{title}</h2>
+      <p>ID: {id}</p>
+      <p>Prep Time: {prepTime} min</p>
+      <p>Cook Time: {cookTime} min</p>
+      <p>Total Time: {totalTime} min</p>
+      <p>Servings: {servings}</p>
+      {tags && tags.length > 0 && (
+        <div className="mt-2">
+          <p>Tags: {tags.join(', ')}</p>
+        </div>
+      )}
+      <div className="mt-4">
+        <button 
+          className="px-4 py-2 mr-2 bg-blue-500 text-white rounded"
+          onClick={() => onClick && onClick(id)}
+        >
+          View Recipe
+        </button>
+        {onFavoriteToggle && (
+          <button 
+            className="px-4 py-2 bg-red-500 text-white rounded"
+            onClick={(e) => {
+              e.stopPropagation();
+              onFavoriteToggle(id);
+            }}
+          >
+            {isFavorite ? 'Unfavorite' : 'Favorite'}
+          </button>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default RecipeCard;

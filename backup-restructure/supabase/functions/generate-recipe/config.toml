@@ -1,0 +1,12 @@
+[global]
+runtime = "deno"
+entrypoint = "index.ts"
+
+[http]
+cors = true
+auth = false
+verify_jwt = false
+
+[functions.generate-recipe]
+verify_jwt = false
+auth_mode = "apikey" 

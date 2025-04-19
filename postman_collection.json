@@ -1,0 +1,31 @@
+{
+  "info": {
+    "name": "Meal Minder Guardian API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Generate Recipe",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:54321/functions/v1/generate-recipe",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "54321",
+          "path": ["functions", "v1", "generate-recipe"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"ingredients\": [\"Spinach\", \"Chicken Breast\"],\n  \"filterMode\": \"hybrid\",\n  \"numRecipes\": 1,\n  \"partialRecipes\": false,\n  \"cacheKey\": \"test\",\n  \"existingRecipes\": []\n}"
+        }
+      }
+    }
+  ]
+}

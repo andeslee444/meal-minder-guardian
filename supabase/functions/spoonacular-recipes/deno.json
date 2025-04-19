@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "lib": ["deno.window", "deno.ns", "deno.unstable", "dom"],
+    "strict": true,
+    "types": ["./types.d.ts"],
+    "checkJs": false
+  },
+  "imports": {
+    "std/": "https://deno.land/std@0.168.0/",
+    "supabase": "https://esm.sh/@supabase/supabase-js@2.39.8"
+  },
+  "tasks": {
+    "start": "deno run --allow-net --allow-env index.ts",
+    "dev": "deno run --watch --allow-net --allow-env index.ts",
+    "test": "deno test --allow-net --allow-env"
+  },
+  "lint": {
+    "files": {
+      "include": ["**/*.ts"]
+    },
+    "rules": {
+      "tags": ["recommended"],
+      "exclude": ["no-explicit-any", "require-await", "no-dupe-class-members"]
+    }
+  },
+  "fmt": {
+    "files": {
+      "include": ["**/*.ts"]
+    },
+    "options": {
+      "lineWidth": 100,
+      "indentWidth": 2
+    }
+  }
+}

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test Components</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body class="bg-gray-100 p-8">
+    <div id="root"></div>
+
+    <script type="text/babel">
+      // Simple card component
+      const Card = ({ title, description, onClick }) => (
+        <div
+          className="bg-white rounded-lg shadow-md p-6 mb-4 hover:shadow-lg transition-shadow duration-300 cursor-pointer"
+          onClick={onClick}
+        >
+          <h2 className="text-xl font-semibold mb-2 text-gray-800">{title}</h2>
+          <p className="text-gray-600">{description}</p>
+          <button className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+            View Details
+          </button>
+        </div>
+      );
+
+      // App component
+      const App = () => {
+        const [cards, setCards] = React.useState([
+          { id: 1, title: 'Spaghetti Carbonara', description: 'A classic Italian pasta dish' },
+          { id: 2, title: 'Chicken Curry', description: 'Spicy and flavorful chicken curry' },
+          {
+            id: 3,
+            title: 'Caesar Salad',
+            description: 'Fresh and healthy salad with Caesar dressing',
+          },
+        ]);
+
+        const handleCardClick = id => {
+          alert(`You clicked on card ${id}`);
+        };
+
+        return (
+          <div className="max-w-4xl mx-auto">
+            <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">Test Recipe Cards</h1>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {cards.map(card => (
+                <Card
+                  key={card.id}
+                  title={card.title}
+                  description={card.description}
+                  onClick={() => handleCardClick(card.id)}
+                />
+              ))}
+            </div>
+          </div>
+        );
+      };
+
+      // Render the app
+      ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    </script>
+  </body>
+</html>

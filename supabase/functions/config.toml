@@ -1,0 +1,44 @@
+# A string used as the project reference
+project_id = "ingcacsuikgwvnqjwnpw"
+
+# Follow a formats: v1
+version = 1
+
+[api]
+enabled = true
+# [optional] URL rewrite rules to rewrite request urls based on regex patterns
+# [[api.rewrites]]
+# regex_pattern = "^/users/([^/]+)/?$"
+# destination = "/users_proxy/$1"
+
+[db]
+enabled = true
+
+[realtime]
+enabled = true
+
+[analytics]
+enabled = true
+
+[storage]
+enabled = true
+
+[functions]
+verify_jwt = false
+auth_mode = "apikey"
+
+[functions.generate-recipe]
+verify_jwt = false
+auth_mode = "apikey"
+
+[functions.generate-image]
+verify_jwt = false
+auth_mode = "apikey"
+
+[functions.spoonacular-recipes]
+verify_jwt = false
+auth_mode = "apikey"
+
+[functions.test]
+verify_jwt = false
+auth_mode = "apikey"

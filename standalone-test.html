@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React Test</title>
+    <style>
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+          'Open Sans', 'Helvetica Neue', sans-serif;
+        padding: 20px;
+        max-width: 800px;
+        margin: 0 auto;
+        line-height: 1.5;
+      }
+      .card {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 20px;
+        margin-top: 20px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      .success {
+        color: green;
+        font-weight: bold;
+      }
+      .error {
+        color: red;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>React Standalone Test</h1>
+    <p>This page tests if React can render properly without your build system.</p>
+
+    <div id="root"></div>
+
+    <!-- Load React from CDN -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <script>
+      // Simple React component
+      const App = () => {
+        const [count, setCount] = React.useState(0);
+
+        return React.createElement(
+          'div',
+          { className: 'card' },
+          React.createElement('h2', null, 'Basic React Test'),
+          React.createElement(
+            'p',
+            { className: 'success' },
+            '✅ If you can see this, basic React rendering is working!'
+          ),
+          React.createElement(
+            'p',
+            null,
+            'The issue is likely in your build configuration, not React itself.'
+          ),
+          React.createElement(
+            'div',
+            null,
+            React.createElement('p', null, `Count: ${count}`),
+            React.createElement(
+              'button',
+              {
+                onClick: () => setCount(c => c + 1),
+                style: { padding: '8px 16px', cursor: 'pointer' },
+              },
+              'Increase Count'
+            )
+          )
+        );
+      };
+
+      // Render the App component
+      const rootElement = document.getElementById('root');
+      const root = ReactDOM.createRoot(rootElement);
+      root.render(React.createElement(App));
+    </script>
+  </body>
+</html>

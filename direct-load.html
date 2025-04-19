@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KitchenBuddy Direct Load</title>
+    <!-- Load the styles directly from the server -->
+    <link rel="stylesheet" href="http://localhost:8081/src/index.css" />
+  </head>
+  <body>
+    <div id="root">Loading KitchenBuddy...</div>
+
+    <!-- Load the app directly -->
+    <script type="module" src="http://localhost:8081/src/main.tsx"></script>
+
+    <!-- Fallback content in case the app doesn't load -->
+    <div id="fallback" style="display: none; margin: 50px; font-family: Arial, sans-serif">
+      <h1>KitchenBuddy Failed to Load</h1>
+      <p>Please try the following:</p>
+      <ol>
+        <li>Check if the development server is running (<code>npm run dev</code>)</li>
+        <li>Clear your browser cache and reload</li>
+        <li>Check the browser console for errors</li>
+      </ol>
+      <button onclick="window.location.href='http://localhost:8081/'">Try Direct URL</button>
+      <button onclick="window.location.href='http://localhost:8085/test-app.html'">
+        Try Test App
+      </button>
+    </div>
+
+    <script>
+      // Show fallback content if the app doesn't load within 5 seconds
+      setTimeout(() => {
+        if (!document.querySelector('#root').childElementCount) {
+          document.querySelector('#fallback').style.display = 'block';
+        }
+      }, 5000);
+    </script>
+  </body>
+</html>
